@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ダッシュボード - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html" class="active">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html">契約検索</a></li>
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>ダッシュボード</h2>
+
+      <!-- クイックアクション -->
+      <div class="card" style="background: #f8f9fa; border: none;">
+        <h2 style="color: #1a365d; margin-bottom: 25px;">主要機能</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+
+          <!-- 契約書登録 -->
+          <a href="05-upload.html" style="text-decoration: none;">
+            <div style="background: white; border-radius: 8px; padding: 24px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid #3182ce;">
+              <div style="color: #3182ce; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 8px;">UPLOAD</div>
+              <div style="color: #1a365d; font-size: 18px; font-weight: 600; margin-bottom: 8px;">契約書登録</div>
+              <div style="color: #718096; font-size: 13px; line-height: 1.6;">PDFファイルをアップロードして契約情報を自動抽出</div>
+            </div>
+          </a>
+
+          <!-- 契約検索 -->
+          <a href="03-contract-list.html" style="text-decoration: none;">
+            <div style="background: white; border-radius: 8px; padding: 24px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid #2c5282;">
+              <div style="color: #2c5282; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 8px;">SEARCH</div>
+              <div style="color: #1a365d; font-size: 18px; font-weight: 600; margin-bottom: 8px;">契約検索</div>
+              <div style="color: #718096; font-size: 13px; line-height: 1.6;">通常検索・AI検索で契約を検索</div>
+            </div>
+          </a>
+
+          <!-- レントロール -->
+          <a href="08-rentroll.html" style="text-decoration: none;">
+            <div style="background: white; border-radius: 8px; padding: 24px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid #4299e1;">
+              <div style="color: #4299e1; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 8px;">REPORT</div>
+              <div style="color: #1a365d; font-size: 18px; font-weight: 600; margin-bottom: 8px;">レントロール作成</div>
+              <div style="color: #718096; font-size: 13px; line-height: 1.6;">賃貸物件一覧をExcel/CSV形式で出力</div>
+            </div>
+          </a>
+
+          <!-- AI契約分析 -->
+          <a href="10-ai-analysis.html" style="text-decoration: none;">
+            <div style="background: white; border-radius: 8px; padding: 24px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid #3182ce;">
+              <div style="color: #3182ce; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 8px;">AI ANALYSIS</div>
+              <div style="color: #1a365d; font-size: 18px; font-weight: 600; margin-bottom: 8px;">AI契約分析</div>
+              <div style="color: #718096; font-size: 13px; line-height: 1.6;">データ分析・統計計算・傾向レポート</div>
+            </div>
+          </a>
+
+          <!-- 期限管理 -->
+          <a href="07-calendar.html" style="text-decoration: none;">
+            <div style="background: white; border-radius: 8px; padding: 24px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.08); border-left: 4px solid #e53e3e;">
+              <div style="color: #e53e3e; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 8px;">CALENDAR</div>
+              <div style="color: #1a365d; font-size: 18px; font-weight: 600; margin-bottom: 8px;">期限管理</div>
+              <div style="color: #718096; font-size: 13px; line-height: 1.6;">契約満了・更新期限をカレンダーで確認</div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- アラート -->
+      <div style="margin-top: 30px; display: grid; gap: 15px;">
+        <div class="alert alert-info">
+          <strong>未検証:</strong> 未検証の契約情報が23件あります。<a href="03-contract-list.html" style="margin-left: 10px; color: #0c5460; text-decoration: underline;">確認する</a>
+        </div>
+        <div class="alert alert-warning">
+          <strong>期限間近:</strong> 30日以内に満了する契約が12件あります。<a href="07-calendar.html" style="margin-left: 10px; color: #856404; text-decoration: underline;">カレンダーで確認</a>
+        </div>
+      </div>
+
+      <!-- 2カラムレイアウト -->
+      <div class="grid grid-2" style="margin-top: 30px; gap: 30px;">
+        <!-- 左カラム：最近の契約と期限間近 -->
+        <div>
+          <!-- 最近追加された契約 -->
+          <div class="card">
+            <h2>最近追加された契約</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>契約番号</th>
+                  <th>物件名</th>
+                  <th>ステータス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="04-contract-detail.html">C-2025-001</a></td>
+                  <td>東京オフィスビル 5F</td>
+                  <td><span class="badge badge-warning">未検証</span></td>
+                </tr>
+                <tr>
+                  <td><a href="04-contract-detail.html">C-2025-002</a></td>
+                  <td>渋谷店舗 1F</td>
+                  <td><span class="badge badge-success">確定</span></td>
+                </tr>
+                <tr>
+                  <td><a href="04-contract-detail.html">C-2025-003</a></td>
+                  <td>横浜倉庫</td>
+                  <td><span class="badge badge-success">確定</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="03-contract-list.html" style="display: block; text-align: right; margin-top: 10px; color: #0066cc; font-size: 14px;">すべて見る →</a>
+          </div>
+
+          <!-- 期限間近の契約 -->
+          <div class="card" style="margin-top: 20px;">
+            <h2>期限間近の契約</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>契約番号</th>
+                  <th>物件名</th>
+                  <th>終了日</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="04-contract-detail.html">C-2023-045</a></td>
+                  <td>品川オフィス 3F</td>
+                  <td><span class="badge badge-danger">10/31 (残29日)</span></td>
+                </tr>
+                <tr>
+                  <td><a href="04-contract-detail.html">C-2023-078</a></td>
+                  <td>新宿店舗 B1F</td>
+                  <td><span class="badge badge-warning">11/15 (残44日)</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="07-calendar.html" style="display: block; text-align: right; margin-top: 10px; color: #0066cc; font-size: 14px;">カレンダーで見る →</a>
+          </div>
+        </div>
+
+        <!-- 右カラム：簡易カレンダー -->
+        <div>
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+              <h2>今月の契約期限</h2>
+              <a href="07-calendar.html" class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">詳細カレンダー</a>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 15px;">
+              <span style="font-size: 18px; font-weight: bold;">2025年10月</span>
+            </div>
+
+            <!-- 簡易カレンダー -->
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 20px;">
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">日</div>
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">月</div>
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">火</div>
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">水</div>
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">木</div>
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">金</div>
+              <div style="text-align: center; font-weight: bold; font-size: 12px; padding: 5px; color: #666;">土</div>
+
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px; opacity: 0.5;">29</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px; opacity: 0.5;">30</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">1</div>
+              <div style="text-align: center; padding: 8px; background: #e8f4f8; border-radius: 4px; border: 2px solid #0066cc; font-weight: bold;">2</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">3</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">4</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">5</div>
+
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">6</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">7</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">8</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">9</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">10</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">11</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">12</div>
+
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">13</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">14</div>
+              <div style="text-align: center; padding: 8px; background: #d4edda; border-radius: 4px; border: 2px solid #28a745; font-weight: bold;">15</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">16</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">17</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">18</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">19</div>
+
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">20</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">21</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">22</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">23</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">24</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">25</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">26</div>
+
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">27</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">28</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">29</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">30</div>
+              <div style="text-align: center; padding: 8px; background: #fff3cd; border-radius: 4px; border: 2px solid #ffc107; font-weight: bold;">31</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px; opacity: 0.5;">1</div>
+              <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px; opacity: 0.5;">2</div>
+            </div>
+
+            <!-- イベント一覧 -->
+            <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+              <h3 style="font-size: 14px; margin-bottom: 10px; color: #666;">今月のイベント</h3>
+              <div style="display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+                <div style="width: 40px; font-weight: bold; color: #0066cc;">10/2</div>
+                <div style="flex: 1; font-size: 14px;">契約開始 (1件)</div>
+              </div>
+              <div style="display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
+                <div style="width: 40px; font-weight: bold; color: #28a745;">10/15</div>
+                <div style="flex: 1; font-size: 14px;">更新期限 (2件)</div>
+              </div>
+              <div style="display: flex; align-items: center; padding: 8px 0;">
+                <div style="width: 40px; font-weight: bold; color: #ffc107;">10/31</div>
+                <div style="flex: 1; font-size: 14px;">契約満了 (3件)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レントロール作成 - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html">契約検索</a></li>
+        
+        <li><a href="08-rentroll.html" class="active">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>レントロール作成</h2>
+
+      <div class="alert alert-info">
+        <strong>レントロールとは:</strong> 賃貸物件の一覧表で、物件情報・賃料・契約状況などを一覧化したレポートです。
+      </div>
+
+      <!-- 出力条件設定 -->
+      <div class="card" style="margin-top: 20px;">
+        <h3 style="font-size: 16px; margin-bottom: 15px;">出力条件設定</h3>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>対象期間（開始）</label>
+            <input type="date" class="form-control" value="2025-01-01">
+          </div>
+          <div class="form-group">
+            <label>対象期間（終了）</label>
+            <input type="date" class="form-control" value="2025-12-31">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>契約ステータス</label>
+          <div style="display: flex; gap: 20px; margin-top: 10px;">
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 有効契約
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox"> 終了契約
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 未検証契約
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>契約種別</label>
+          <div style="display: flex; gap: 20px; margin-top: 10px;">
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 賃貸借契約
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 更新合意書
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 覚書
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>出力項目</label>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 10px;">
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 契約番号
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 物件名
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 所在地
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 面積
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 賃料
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 共益費
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 敷金
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox"> 礼金
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 契約期間
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 貸主名
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox" checked> 借主名
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="checkbox"> 備考
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ソート順</label>
+          <select class="form-control">
+            <option>契約番号（昇順）</option>
+            <option>契約番号（降順）</option>
+            <option>物件名（昇順）</option>
+            <option>賃料（高い順）</option>
+            <option>賃料（低い順）</option>
+            <option>契約開始日（新しい順）</option>
+            <option>契約開始日（古い順）</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>出力形式</label>
+          <div style="display: flex; gap: 20px; margin-top: 10px;">
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="radio" name="format" checked> Excel (xlsx)
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="radio" name="format"> CSV
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px;">
+              <input type="radio" name="format"> PDF
+            </label>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 30px;">
+          <button class="btn btn-primary">プレビュー</button>
+          <button class="btn btn-success">ダウンロード</button>
+          <button class="btn btn-secondary">条件をクリア</button>
+        </div>
+      </div>
+
+      <!-- プレビュー -->
+      <div class="card" style="margin-top: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+          <h2>レントロールプレビュー</h2>
+          <span style="color: #666; font-size: 14px;">対象件数: 987件</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>契約番号</th>
+                <th>物件名</th>
+                <th>所在地</th>
+                <th>面積(m²)</th>
+                <th>賃料</th>
+                <th>共益費</th>
+                <th>敷金</th>
+                <th>契約期間</th>
+                <th>貸主名</th>
+                <th>借主名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>C-2025-001</td>
+                <td>東京オフィスビル 5F</td>
+                <td>東京都千代田区丸の内1-1-1</td>
+                <td>120.50</td>
+                <td>¥500,000</td>
+                <td>¥50,000</td>
+                <td>¥1,500,000</td>
+                <td>2025-04-01 ～ 2027-03-31</td>
+                <td>株式会社丸の内不動産</td>
+                <td>株式会社サンプル商事</td>
+              </tr>
+              <tr>
+                <td>C-2025-002</td>
+                <td>渋谷店舗 1F</td>
+                <td>東京都渋谷区渋谷1-1-1</td>
+                <td>85.30</td>
+                <td>¥800,000</td>
+                <td>¥80,000</td>
+                <td>¥2,400,000</td>
+                <td>2025-03-15 ～ 2026-03-14</td>
+                <td>渋谷不動産株式会社</td>
+                <td>サンプル小売株式会社</td>
+              </tr>
+              <tr>
+                <td>C-2025-003</td>
+                <td>横浜倉庫</td>
+                <td>神奈川県横浜市中区1-1-1</td>
+                <td>500.00</td>
+                <td>¥350,000</td>
+                <td>¥30,000</td>
+                <td>¥1,050,000</td>
+                <td>2025-02-01 ～ 2030-01-31</td>
+                <td>横浜ビルディング株式会社</td>
+                <td>物流サンプル株式会社</td>
+              </tr>
+              <tr>
+                <td>C-2024-125</td>
+                <td>品川オフィス 3F</td>
+                <td>東京都港区品川1-1-1</td>
+                <td>95.20</td>
+                <td>¥450,000</td>
+                <td>¥45,000</td>
+                <td>¥1,350,000</td>
+                <td>2024-11-01 ～ 2025-10-31</td>
+                <td>品川不動産管理株式会社</td>
+                <td>テクノロジー株式会社</td>
+              </tr>
+              <tr>
+                <td>C-2024-098</td>
+                <td>新宿店舗 B1F</td>
+                <td>東京都新宿区新宿3-1-1</td>
+                <td>110.50</td>
+                <td>¥720,000</td>
+                <td>¥70,000</td>
+                <td>¥2,160,000</td>
+                <td>2023-12-01 ～ 2025-11-30</td>
+                <td>新宿ビル管理株式会社</td>
+                <td>飲食サンプル株式会社</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+          <p style="color: #666; font-size: 14px;">※上記は最初の5件のプレビューです。全件出力するにはダウンロードしてください。</p>
+        </div>
+      </div>
+
+      <!-- サマリー情報 -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>サマリー情報</h2>
+        <div class="grid grid-4">
+          <div class="detail-row" style="display: block; border: none;">
+            <div class="detail-label">総契約件数</div>
+            <div class="detail-value" style="font-size: 24px; font-weight: bold; color: #0066cc;">987件</div>
+          </div>
+          <div class="detail-row" style="display: block; border: none;">
+            <div class="detail-label">月額賃料合計</div>
+            <div class="detail-value" style="font-size: 24px; font-weight: bold; color: #0066cc;">¥125,450,000</div>
+          </div>
+          <div class="detail-row" style="display: block; border: none;">
+            <div class="detail-label">平均賃料</div>
+            <div class="detail-value" style="font-size: 24px; font-weight: bold; color: #0066cc;">¥127,088</div>
+          </div>
+          <div class="detail-row" style="display: block; border: none;">
+            <div class="detail-label">総面積</div>
+            <div class="detail-value" style="font-size: 24px; font-weight: bold; color: #0066cc;">125,340 m²</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 保存済みテンプレート -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>保存済みテンプレート</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>テンプレート名</th>
+              <th>説明</th>
+              <th>最終使用日</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>月次レポート用</td>
+              <td>毎月の定例レポート向け（全項目含む）</td>
+              <td>2025-09-01</td>
+              <td>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">読込</button>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px; margin-left: 5px;">削除</button>
+              </td>
+            </tr>
+            <tr>
+              <td>簡易版</td>
+              <td>基本情報のみ（契約番号・物件名・賃料・期間）</td>
+              <td>2025-08-15</td>
+              <td>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">読込</button>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px; margin-left: 5px;">削除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" style="margin-top: 15px;">現在の設定をテンプレートとして保存</button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

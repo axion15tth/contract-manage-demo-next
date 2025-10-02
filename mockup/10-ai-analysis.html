@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI契約分析 - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html">契約検索</a></li>
+        
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html" class="active">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>AI契約分析</h2>
+
+      <div class="alert alert-info">
+        <strong>AI契約分析とは:</strong> 自然言語で質問すると、AIが契約データを分析して計算結果・統計情報・傾向分析をレポートします。
+      </div>
+
+      <!-- 分析リクエストボックス -->
+      <div class="card" style="margin-top: 20px;">
+        <h3 style="font-size: 16px; margin-bottom: 15px;">分析したい内容を入力してください</h3>
+
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            rows="4"
+            placeholder="例: A社がオーナーの物件の、一店舗あたりの賃料平均を計算して&#10;例: 渋谷エリアの物件で、賃料が最も高い上位5件を教えて&#10;例: 過去3年間の賃料改定の傾向を分析して&#10;例: 敷金が賃料の3ヶ月分を超える契約の割合は？"
+          ></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-primary" style="flex: 1;">分析実行</button>
+          <button class="btn btn-secondary">クリア</button>
+        </div>
+
+        <!-- 分析例 -->
+        <div style="margin-top: 20px;">
+          <h4 style="font-size: 14px; margin-bottom: 10px; color: #666;">よく使う分析例:</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">エリア別の平均賃料</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">契約期間の分布</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">敷金返還率の計算</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">賃料改定の傾向</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">契約満了予測</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">コスト最適化提案</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 分析結果エリア -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>分析結果</h2>
+
+        <!-- AI回答 -->
+        <div style="background: #f8f9fa; border-left: 4px solid #0066cc; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+          <h3 style="font-size: 16px; margin-bottom: 15px; color: #0066cc;">🧠 AI分析結果</h3>
+          <div style="line-height: 1.8; color: #333;">
+            <p style="margin-bottom: 15px;">
+              <strong>質問:</strong> 「丸の内不動産がオーナーの物件の、一店舗あたりの賃料平均を計算して」
+            </p>
+            <p style="margin-bottom: 15px;">
+              丸の内不動産株式会社が貸主（オーナー）となっている契約を分析しました。
+            </p>
+            <div style="background: white; border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div style="text-align: center;">
+                  <div style="font-size: 14px; color: #666; margin-bottom: 8px;">対象物件数</div>
+                  <div style="font-size: 32px; font-weight: bold; color: #0066cc;">23件</div>
+                </div>
+                <div style="text-align: center; border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0;">
+                  <div style="font-size: 14px; color: #666; margin-bottom: 8px;">賃料平均</div>
+                  <div style="font-size: 32px; font-weight: bold; color: #28a745;">¥584,348</div>
+                </div>
+                <div style="text-align: center;">
+                  <div style="font-size: 14px; color: #666; margin-bottom: 8px;">賃料合計（月額）</div>
+                  <div style="font-size: 32px; font-weight: bold; color: #666;">¥13,440,000</div>
+                </div>
+              </div>
+            </div>
+            <p style="margin-bottom: 15px;">
+              <strong>分析詳細:</strong>
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+              <li>最高賃料: <strong>¥1,200,000</strong>（C-2024-089 渋谷オフィスビル 10F）</li>
+              <li>最低賃料: <strong>¥280,000</strong>（C-2023-156 練馬店舗 1F）</li>
+              <li>中央値: <strong>¥550,000</strong></li>
+              <li>標準偏差: <strong>¥245,678</strong>（ばらつきが大きい）</li>
+            </ul>
+            <p style="margin-bottom: 0;">
+              <strong>考察:</strong> 丸の内不動産の物件は、渋谷・品川など都心の高額物件と、練馬・板橋など郊外の低額物件が混在しており、
+              賃料のばらつきが大きいです。エリア別に分析するとより詳細な傾向が見えると思われます。
+            </p>
+          </div>
+        </div>
+
+        <!-- 詳細データテーブル -->
+        <h3 style="font-size: 16px; margin-bottom: 15px;">対象契約一覧（23件）</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>契約番号</th>
+              <th>物件名</th>
+              <th>エリア</th>
+              <th>面積(m²)</th>
+              <th>賃料</th>
+              <th>坪単価</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>C-2024-089</td>
+              <td>渋谷オフィスビル 10F</td>
+              <td>渋谷</td>
+              <td>150.00</td>
+              <td>¥1,200,000</td>
+              <td>¥26,400</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-102</td>
+              <td>品川オフィス 7F</td>
+              <td>品川</td>
+              <td>120.50</td>
+              <td>¥950,000</td>
+              <td>¥26,027</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-115</td>
+              <td>丸の内ビル 5F</td>
+              <td>丸の内</td>
+              <td>95.30</td>
+              <td>¥820,000</td>
+              <td>¥28,417</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-128</td>
+              <td>新宿店舗 2F</td>
+              <td>新宿</td>
+              <td>85.00</td>
+              <td>¥680,000</td>
+              <td>¥26,412</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2023-156</td>
+              <td>練馬店舗 1F</td>
+              <td>練馬</td>
+              <td>60.00</td>
+              <td>¥280,000</td>
+              <td>¥15,400</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="#" style="display: block; text-align: right; margin-top: 10px; color: #0066cc; font-size: 14px;">すべて見る（23件） →</a>
+
+        <!-- グラフ・可視化 -->
+        <div style="margin-top: 30px;">
+          <h3 style="font-size: 16px; margin-bottom: 15px;">エリア別賃料分布</h3>
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 4px;">
+            <div style="margin-bottom: 15px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>渋谷エリア（5件）</span>
+                <span style="font-weight: bold;">平均 ¥980,000</span>
+              </div>
+              <div style="background: #e0e0e0; height: 12px; border-radius: 4px; overflow: hidden;">
+                <div style="background: #0066cc; height: 100%; width: 85%;"></div>
+              </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>品川エリア（4件）</span>
+                <span style="font-weight: bold;">平均 ¥820,000</span>
+              </div>
+              <div style="background: #e0e0e0; height: 12px; border-radius: 4px; overflow: hidden;">
+                <div style="background: #0066cc; height: 100%; width: 71%;"></div>
+              </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>丸の内エリア（6件）</span>
+                <span style="font-weight: bold;">平均 ¥750,000</span>
+              </div>
+              <div style="background: #e0e0e0; height: 12px; border-radius: 4px; overflow: hidden;">
+                <div style="background: #0066cc; height: 100%; width: 65%;"></div>
+              </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>新宿エリア（5件）</span>
+                <span style="font-weight: bold;">平均 ¥580,000</span>
+              </div>
+              <div style="background: #e0e0e0; height: 12px; border-radius: 4px; overflow: hidden;">
+                <div style="background: #0066cc; height: 100%; width: 50%;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>郊外エリア（3件）</span>
+                <span style="font-weight: bold;">平均 ¥320,000</span>
+              </div>
+              <div style="background: #e0e0e0; height: 12px; border-radius: 4px; overflow: hidden;">
+                <div style="background: #0066cc; height: 100%; width: 28%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- アクション -->
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <button class="btn btn-secondary">CSV出力</button>
+          <button class="btn btn-secondary">Excel出力</button>
+          <button class="btn btn-secondary">PDFレポート作成</button>
+        </div>
+      </div>
+
+      <!-- 分析履歴 -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>最近の分析履歴</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>分析日時</th>
+              <th>分析内容</th>
+              <th>結果サマリー</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-10-02 14:30</td>
+              <td>丸の内不動産の物件の平均賃料</td>
+              <td>23件、平均¥584,348</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再実行</button></td>
+            </tr>
+            <tr>
+              <td>2025-10-01 10:15</td>
+              <td>渋谷エリアの賃料上位5件</td>
+              <td>最高¥1,500,000</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再実行</button></td>
+            </tr>
+            <tr>
+              <td>2025-09-30 16:45</td>
+              <td>過去3年間の賃料改定傾向</td>
+              <td>平均改定率+3.2%</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再実行</button></td>
+            </tr>
+            <tr>
+              <td>2025-09-29 11:20</td>
+              <td>敷金が賃料3ヶ月分超の契約割合</td>
+              <td>12.4%（122件）</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再実行</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 使い方ガイド -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>AI契約分析の使い方</h2>
+        <div style="line-height: 1.8;">
+          <h3 style="font-size: 15px; margin-top: 15px; margin-bottom: 10px;">📌 分析のコツ</h3>
+          <ul style="margin-left: 20px; color: #666;">
+            <li>具体的な計算・集計を依頼できます（例: 「平均を計算して」「合計を出して」）</li>
+            <li>条件を指定して分析できます（例: 「A社の物件で」「渋谷エリアの」）</li>
+            <li>比較分析も可能です（例: 「エリア別に比較して」「年度別の推移を見せて」）</li>
+          </ul>
+
+          <h3 style="font-size: 15px; margin-top: 20px; margin-bottom: 10px;">🔢 できる分析</h3>
+          <ul style="margin-left: 20px; color: #666;">
+            <li><strong>統計計算:</strong> 平均・合計・最大・最小・中央値・標準偏差</li>
+            <li><strong>グループ分析:</strong> エリア別・オーナー別・契約種別別の集計</li>
+            <li><strong>傾向分析:</strong> 時系列変化・契約条件の分布</li>
+            <li><strong>比較分析:</strong> 複数条件の比較・ベンチマーク</li>
+            <li><strong>予測分析:</strong> 将来の賃料予測・契約満了予測</li>
+          </ul>
+
+          <h3 style="font-size: 15px; margin-top: 20px; margin-bottom: 10px;">💡 活用例</h3>
+          <ul style="margin-left: 20px; color: #666;">
+            <li>賃料改定交渉のための市場相場分析</li>
+            <li>コスト削減のための高額契約の特定</li>
+            <li>契約更新判断のためのパフォーマンス分析</li>
+            <li>予算策定のための賃料傾向分析</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

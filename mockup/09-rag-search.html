@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI契約検索（RAG） - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html" class="active">契約検索</a></li>
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>契約検索</h2>
+
+      <!-- タブ -->
+      <div style="border-bottom: 2px solid #e2e8f0; margin-bottom: 30px;">
+        <div style="display: flex; gap: 8px;">
+          <a href="03-contract-list.html" style="text-decoration: none; padding: 12px 24px; color: #718096; font-weight: 500;">
+            通常検索
+          </a>
+          <a href="09-rag-search.html" style="text-decoration: none; padding: 12px 24px; color: #3182ce; border-bottom: 3px solid #3182ce; font-weight: 600; margin-bottom: -2px;">
+            AI検索
+          </a>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <strong>AI検索とは:</strong> 自然言語で質問すると、AIが契約書の内容を理解して関連する契約情報を検索・回答します。
+      </div>
+
+      <!-- 検索ボックス -->
+      <div class="card" style="margin-top: 20px;">
+        <h3 style="font-size: 16px; margin-bottom: 15px;">質問を入力してください</h3>
+
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            rows="4"
+            placeholder="例: 来年3月末に満了する賃貸契約を教えて&#10;例: 敷金が賃料の3ヶ月分以上の契約はどれですか？&#10;例: 渋谷エリアで賃料が50万円以上の物件を探しています&#10;例: 自動更新の契約で解約予告期間が3ヶ月以上のものは？"
+          ></textarea>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-primary" style="flex: 1;">検索</button>
+          <button class="btn btn-secondary">クリア</button>
+        </div>
+
+        <!-- クエリ例 -->
+        <div style="margin-top: 20px;">
+          <h4 style="font-size: 14px; margin-bottom: 10px; color: #666;">よく使う質問例:</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">来年満了する契約</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">賃料が高い順に10件</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">解約予告期間が6ヶ月の契約</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">敷金返還条件が厳しい契約</button>
+            <button class="btn btn-secondary" style="padding: 8px 15px; font-size: 13px;">原状回復義務がある契約</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 検索結果エリア -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>検索結果</h2>
+
+        <!-- AI回答 -->
+        <div style="background: #f8f9fa; border-left: 4px solid #0066cc; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+          <h3 style="font-size: 16px; margin-bottom: 15px; color: #0066cc;">💬 AIの回答</h3>
+          <div style="line-height: 1.8; color: #333;">
+            <p style="margin-bottom: 15px;">
+              <strong>質問:</strong> 「来年3月末に満了する賃貸契約を教えて」
+            </p>
+            <p style="margin-bottom: 15px;">
+              2026年3月末（2026-03-31）に満了する賃貸契約は<strong>5件</strong>見つかりました。以下がその一覧です：
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: 15px;">
+              <li>C-2024-089: 渋谷店舗 1F（賃料: ¥800,000）</li>
+              <li>C-2024-102: 品川オフィス 7F（賃料: ¥620,000）</li>
+              <li>C-2024-115: 横浜倉庫A棟（賃料: ¥450,000）</li>
+              <li>C-2024-128: 新宿ビル 3F（賃料: ¥550,000）</li>
+              <li>C-2024-134: 池袋店舗 2F（賃料: ¥380,000）</li>
+            </ul>
+            <p style="margin-bottom: 0;">
+              これらの契約は、解約予告期限（満了の3〜6ヶ月前）が近づいていますので、更新するか解約するかの判断が必要です。詳細は下記の契約一覧をご確認ください。
+            </p>
+          </div>
+        </div>
+
+        <!-- 関連契約一覧 -->
+        <h3 style="font-size: 16px; margin-bottom: 15px;">関連する契約（5件）</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>関連度</th>
+              <th>契約番号</th>
+              <th>物件名</th>
+              <th>契約期間</th>
+              <th>賃料</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span style="color: #28a745; font-weight: bold;">98%</span></td>
+              <td>C-2024-089</td>
+              <td>渋谷店舗 1F</td>
+              <td>2024-04-01 ～ 2026-03-31</td>
+              <td>¥800,000</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td><span style="color: #28a745; font-weight: bold;">96%</span></td>
+              <td>C-2024-102</td>
+              <td>品川オフィス 7F</td>
+              <td>2024-04-01 ～ 2026-03-31</td>
+              <td>¥620,000</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td><span style="color: #28a745; font-weight: bold;">95%</span></td>
+              <td>C-2024-115</td>
+              <td>横浜倉庫A棟</td>
+              <td>2024-04-01 ～ 2026-03-31</td>
+              <td>¥450,000</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td><span style="color: #28a745; font-weight: bold;">94%</span></td>
+              <td>C-2024-128</td>
+              <td>新宿ビル 3F</td>
+              <td>2024-04-01 ～ 2026-03-31</td>
+              <td>¥550,000</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td><span style="color: #ffc107; font-weight: bold;">88%</span></td>
+              <td>C-2024-134</td>
+              <td>池袋店舗 2F</td>
+              <td>2024-04-01 ～ 2026-03-31</td>
+              <td>¥380,000</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- アクション -->
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <button class="btn btn-secondary">CSV出力</button>
+          <button class="btn btn-secondary">Excel出力</button>
+          <button class="btn btn-secondary">レポート作成</button>
+        </div>
+      </div>
+
+      <!-- 検索履歴 -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>最近の検索履歴</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>検索日時</th>
+              <th>質問内容</th>
+              <th>結果件数</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-10-02 14:30</td>
+              <td>来年3月末に満了する賃貸契約を教えて</td>
+              <td>5件</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再検索</button></td>
+            </tr>
+            <tr>
+              <td>2025-10-01 10:15</td>
+              <td>敷金が賃料の3ヶ月分以上の契約</td>
+              <td>12件</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再検索</button></td>
+            </tr>
+            <tr>
+              <td>2025-09-30 16:45</td>
+              <td>渋谷エリアで賃料が50万円以上の物件</td>
+              <td>8件</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再検索</button></td>
+            </tr>
+            <tr>
+              <td>2025-09-29 11:20</td>
+              <td>自動更新の契約で解約予告期間が3ヶ月以上</td>
+              <td>23件</td>
+              <td><button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">再検索</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 使い方ガイド -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>AI契約検索の使い方</h2>
+        <div style="line-height: 1.8;">
+          <h3 style="font-size: 15px; margin-top: 15px; margin-bottom: 10px;">📌 検索のコツ</h3>
+          <ul style="margin-left: 20px; color: #666;">
+            <li>自然な日本語で質問してください（例: 「来年満了する契約は？」）</li>
+            <li>具体的な条件を含めるとより正確な結果が得られます（例: 「賃料50万円以上」「渋谷エリア」）</li>
+            <li>複数の条件を組み合わせることも可能です（例: 「渋谷エリアで賃料50万円以上、かつ敷金が3ヶ月分以上」）</li>
+          </ul>
+
+          <h3 style="font-size: 15px; margin-top: 20px; margin-bottom: 10px;">🔍 検索できる内容</h3>
+          <ul style="margin-left: 20px; color: #666;">
+            <li>契約期間・満了日に関する質問（例: 「今年度内に満了する契約」）</li>
+            <li>金額条件に関する質問（例: 「賃料が100万円以上の物件」）</li>
+            <li>契約条件に関する質問（例: 「自動更新の契約」「原状回復義務がある契約」）</li>
+            <li>物件情報に関する質問（例: 「渋谷エリアの店舗」「面積が100㎡以上のオフィス」）</li>
+            <li>当事者情報に関する質問（例: 「○○不動産が貸主の契約」）</li>
+          </ul>
+
+          <h3 style="font-size: 15px; margin-top: 20px; margin-bottom: 10px;">💡 活用例</h3>
+          <ul style="margin-left: 20px; color: #666;">
+            <li>更新・解約判断のための契約リストアップ</li>
+            <li>賃料改定交渉の候補契約の抽出</li>
+            <li>類似条件の契約の比較分析</li>
+            <li>特定条件を満たす契約の一括管理</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

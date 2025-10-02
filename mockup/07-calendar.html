@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダー - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html">契約検索</a></li>
+        
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html" class="active">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>契約期限カレンダー</h2>
+
+      <div class="alert alert-warning">
+        <strong>注意:</strong> 30日以内に満了・更新期限を迎える契約が12件あります。
+      </div>
+
+      <!-- カレンダー -->
+      <div class="calendar" style="margin-top: 20px;">
+        <div class="calendar-header">
+          <button class="btn btn-secondary">前月</button>
+          <h3 style="font-size: 20px; font-weight: bold;">2025年10月</h3>
+          <button class="btn btn-secondary">次月</button>
+        </div>
+
+        <!-- 曜日ヘッダー -->
+        <div class="calendar-grid">
+          <div class="calendar-day-header">日</div>
+          <div class="calendar-day-header">月</div>
+          <div class="calendar-day-header">火</div>
+          <div class="calendar-day-header">水</div>
+          <div class="calendar-day-header">木</div>
+          <div class="calendar-day-header">金</div>
+          <div class="calendar-day-header">土</div>
+        </div>
+
+        <!-- カレンダー日付 -->
+        <div class="calendar-grid">
+          <!-- 1週目 -->
+          <div class="calendar-day" style="opacity: 0.5;">
+            <div style="font-weight: bold;">29</div>
+          </div>
+          <div class="calendar-day" style="opacity: 0.5;">
+            <div style="font-weight: bold;">30</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">1</div>
+          </div>
+          <div class="calendar-day" style="background: #e8f4f8; border-left: 4px solid #0066cc;">
+            <div style="font-weight: bold;">2</div>
+            <div style="font-size: 11px; margin-top: 5px; color: #0066cc;">📄 契約開始(1)</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">3</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">4</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">5</div>
+          </div>
+
+          <!-- 2週目 -->
+          <div class="calendar-day">
+            <div style="font-weight: bold;">6</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">7</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">8</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">9</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">10</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">11</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">12</div>
+          </div>
+
+          <!-- 3週目 -->
+          <div class="calendar-day">
+            <div style="font-weight: bold;">13</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">14</div>
+          </div>
+          <div class="calendar-day" style="background: #e8f4f8; border-left: 4px solid #28a745;">
+            <div style="font-weight: bold;">15</div>
+            <div style="font-size: 11px; margin-top: 5px; color: #28a745;">🔄 更新期限(2)</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">16</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">17</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">18</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">19</div>
+          </div>
+
+          <!-- 4週目 -->
+          <div class="calendar-day">
+            <div style="font-weight: bold;">20</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">21</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">22</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">23</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">24</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">25</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">26</div>
+          </div>
+
+          <!-- 5週目 -->
+          <div class="calendar-day">
+            <div style="font-weight: bold;">27</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">28</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">29</div>
+          </div>
+          <div class="calendar-day">
+            <div style="font-weight: bold;">30</div>
+          </div>
+          <div class="calendar-day has-event">
+            <div style="font-weight: bold;">31</div>
+            <div style="font-size: 11px; margin-top: 5px; color: #856404;">⚠️ 契約満了(3)</div>
+          </div>
+          <div class="calendar-day" style="opacity: 0.5;">
+            <div style="font-weight: bold;">1</div>
+          </div>
+          <div class="calendar-day" style="opacity: 0.5;">
+            <div style="font-weight: bold;">2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 凡例 -->
+      <div class="card" style="margin-top: 30px;">
+        <h3 style="font-size: 16px; margin-bottom: 15px;">イベント種別</h3>
+        <div style="display: flex; gap: 30px;">
+          <div style="display: flex; align-items: center;">
+            <div style="width: 20px; height: 20px; background: #e8f4f8; border-left: 4px solid #0066cc; margin-right: 10px;"></div>
+            <span>契約開始</span>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div style="width: 20px; height: 20px; background: #e8f4f8; border-left: 4px solid #28a745; margin-right: 10px;"></div>
+            <span>更新期限</span>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <div style="width: 20px; height: 20px; background: #fff3cd; border-left: 4px solid #ffc107; margin-right: 10px;"></div>
+            <span>契約満了</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 今月の期限一覧 -->
+      <div class="card" style="margin-top: 30px;">
+        <h2>今月の期限一覧</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>イベント種別</th>
+              <th>契約番号</th>
+              <th>物件名</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-10-02</td>
+              <td><span class="badge badge-info">契約開始</span></td>
+              <td>C-2025-045</td>
+              <td>札幌営業所</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>2025-10-15</td>
+              <td><span class="badge badge-success">更新期限</span></td>
+              <td>C-2023-089</td>
+              <td>名古屋店舗 2F</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>2025-10-15</td>
+              <td><span class="badge badge-success">更新期限</span></td>
+              <td>C-2023-102</td>
+              <td>京都オフィス</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>2025-10-31</td>
+              <td><span class="badge badge-warning">契約満了</span></td>
+              <td>C-2023-045</td>
+              <td>品川オフィス 3F</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>2025-10-31</td>
+              <td><span class="badge badge-warning">契約満了</span></td>
+              <td>C-2023-067</td>
+              <td>池袋店舗</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>2025-10-31</td>
+              <td><span class="badge badge-warning">契約満了</span></td>
+              <td>C-2023-078</td>
+              <td>神戸倉庫</td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

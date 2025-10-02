@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>抽出結果検証 - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html" class="active">契約書登録</a></li>
+        <li><a href="03-contract-list.html">契約検索</a></li>
+        
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content" style="padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>抽出結果検証</h2>
+        <div>
+          <a href="05-upload.html" class="btn btn-secondary">戻る</a>
+          <button class="btn btn-success" style="margin-left: 10px;">検証完了・保存</button>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <strong>検証手順:</strong> 左側のPDF原本を確認しながら、右側の抽出結果を検証してください。信頼度が低い項目（黄色・赤色）は特に注意して確認してください。
+      </div>
+
+      <!-- サイドバイサイド表示 -->
+      <div class="split-view">
+        <!-- PDF表示エリア -->
+        <div class="pdf-viewer">
+          <h3 style="margin-bottom: 15px;">契約書原本</h3>
+          <div class="pdf-placeholder">
+            <div style="text-align: center;">
+              <p style="font-size: 14px; margin-bottom: 10px;">PDFビューア</p>
+              <p style="font-size: 12px;">賃貸借契約書_C-2025-001.pdf</p>
+              <div style="margin-top: 20px;">
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">拡大</button>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px; margin-left: 5px;">縮小</button>
+                <button class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px; margin-left: 5px;">次ページ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 抽出結果フォーム -->
+        <div class="extraction-form">
+          <h3 style="margin-bottom: 15px;">抽出結果（全体信頼度: <span class="confidence-high">92%</span>）</h3>
+
+          <div style="max-height: calc(100vh - 300px); overflow-y: auto;">
+            <!-- 契約基本情報 -->
+            <div class="detail-section">
+              <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">契約基本情報</h4>
+
+              <div class="form-group">
+                <label>契約番号 <span class="confidence-high">(98%)</span></label>
+                <input type="text" class="form-control" value="C-2025-001">
+              </div>
+
+              <div class="form-group">
+                <label>契約種別 <span class="confidence-high">(95%)</span></label>
+                <select class="form-control">
+                  <option selected>賃貸借契約</option>
+                  <option>更新合意書</option>
+                  <option>覚書</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>契約開始日 <span class="confidence-high">(99%)</span></label>
+                <input type="date" class="form-control" value="2025-04-01">
+              </div>
+
+              <div class="form-group">
+                <label>契約終了日 <span class="confidence-high">(99%)</span></label>
+                <input type="date" class="form-control" value="2027-03-31">
+              </div>
+
+              <div class="form-group">
+                <label>更新条件 <span class="confidence-high">(88%)</span></label>
+                <input type="text" class="form-control" value="自動更新（2年間）">
+              </div>
+
+              <div class="form-group">
+                <label>解約通知期限 <span class="confidence-medium">(75%)</span> ⚠️</label>
+                <input type="text" class="form-control" value="3ヶ月前" style="border-color: #ffc107; background: #fff3cd;">
+                <small style="color: #856404;">※信頼度が低いため確認してください</small>
+              </div>
+            </div>
+
+            <!-- 物件情報 -->
+            <div class="detail-section">
+              <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">物件情報</h4>
+
+              <div class="form-group">
+                <label>物件名 <span class="confidence-high">(96%)</span></label>
+                <input type="text" class="form-control" value="東京オフィスビル 5F">
+              </div>
+
+              <div class="form-group">
+                <label>所在地 <span class="confidence-high">(94%)</span></label>
+                <input type="text" class="form-control" value="東京都千代田区丸の内1-1-1">
+              </div>
+
+              <div class="form-group">
+                <label>面積 <span class="confidence-high">(92%)</span></label>
+                <input type="text" class="form-control" value="120.50 m²">
+              </div>
+
+              <div class="form-group">
+                <label>用途 <span class="confidence-high">(90%)</span></label>
+                <input type="text" class="form-control" value="事務所">
+              </div>
+            </div>
+
+            <!-- 当事者情報 -->
+            <div class="detail-section">
+              <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">貸主情報</h4>
+
+              <div class="form-group">
+                <label>名称 <span class="confidence-high">(97%)</span></label>
+                <input type="text" class="form-control" value="株式会社丸の内不動産">
+              </div>
+
+              <div class="form-group">
+                <label>住所 <span class="confidence-high">(93%)</span></label>
+                <input type="text" class="form-control" value="東京都千代田区丸の内2-2-2">
+              </div>
+
+              <div class="form-group">
+                <label>連絡先 <span class="confidence-low">(65%)</span> ⚠️</label>
+                <input type="text" class="form-control" value="03-1234-5678" style="border-color: #dc3545; background: #f8d7da;">
+                <small style="color: #721c24;">※信頼度が低いため必ず確認してください</small>
+              </div>
+            </div>
+
+            <div class="detail-section">
+              <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">借主情報</h4>
+
+              <div class="form-group">
+                <label>名称 <span class="confidence-high">(98%)</span></label>
+                <input type="text" class="form-control" value="株式会社サンプル商事">
+              </div>
+
+              <div class="form-group">
+                <label>住所 <span class="confidence-high">(95%)</span></label>
+                <input type="text" class="form-control" value="東京都港区赤坂1-1-1">
+              </div>
+
+              <div class="form-group">
+                <label>連絡先 <span class="confidence-high">(88%)</span></label>
+                <input type="text" class="form-control" value="03-9876-5432">
+              </div>
+            </div>
+
+            <!-- 金銭条件 -->
+            <div class="detail-section">
+              <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">金銭条件</h4>
+
+              <div class="form-group">
+                <label>月額賃料 <span class="confidence-high">(99%)</span></label>
+                <input type="text" class="form-control" value="¥500,000">
+              </div>
+
+              <div class="form-group">
+                <label>共益費 <span class="confidence-high">(96%)</span></label>
+                <input type="text" class="form-control" value="¥50,000">
+              </div>
+
+              <div class="form-group">
+                <label>敷金 <span class="confidence-high">(98%)</span></label>
+                <input type="text" class="form-control" value="¥1,500,000">
+              </div>
+
+              <div class="form-group">
+                <label>礼金 <span class="confidence-high">(98%)</span></label>
+                <input type="text" class="form-control" value="¥1,000,000">
+              </div>
+
+              <div class="form-group">
+                <label>更新料 <span class="confidence-high">(94%)</span></label>
+                <input type="text" class="form-control" value="¥500,000">
+              </div>
+
+              <div class="form-group">
+                <label>支払期日 <span class="confidence-medium">(78%)</span> ⚠️</label>
+                <input type="text" class="form-control" value="毎月末日" style="border-color: #ffc107; background: #fff3cd;">
+                <small style="color: #856404;">※信頼度が低いため確認してください</small>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #e0e0e0;">
+            <button class="btn btn-success" style="width: 100%;">検証完了・保存</button>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 10px;">下書き保存</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

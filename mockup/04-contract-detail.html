@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>契約詳細 - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html" class="active">契約検索</a></li>
+        
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>契約詳細</h2>
+        <div>
+          <a href="03-contract-list.html" class="btn btn-secondary">一覧に戻る</a>
+          <button class="btn btn-primary" style="margin-left: 10px;">編集</button>
+        </div>
+      </div>
+
+      <!-- ステータス情報 -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h2 style="margin-bottom: 10px;">東京オフィスビル 5F</h2>
+            <p style="color: #666;">契約番号: C-2025-001</p>
+          </div>
+          <div>
+            <span class="badge badge-warning" style="font-size: 14px; padding: 8px 16px;">未検証</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-warning" style="margin-top: 20px;">
+        <strong>未検証:</strong> この契約はAI抽出結果の検証が完了していません。<a href="06-verification.html" style="margin-left: 10px; color: #856404; text-decoration: underline;">検証する</a>
+      </div>
+
+      <!-- 契約基本情報 -->
+      <div class="card" style="margin-top: 20px;">
+        <div class="detail-section">
+          <h3>契約基本情報</h3>
+          <div class="detail-row">
+            <div class="detail-label">契約番号</div>
+            <div class="detail-value">C-2025-001</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">契約種別</div>
+            <div class="detail-value">賃貸借契約</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">契約開始日</div>
+            <div class="detail-value">2025年4月1日</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">契約終了日</div>
+            <div class="detail-value">2027年3月31日</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">契約期間</div>
+            <div class="detail-value">2年間</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">更新条件</div>
+            <div class="detail-value">自動更新（2年間）</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">解約通知期限</div>
+            <div class="detail-value">3ヶ月前</div>
+          </div>
+        </div>
+
+        <!-- 物件情報 -->
+        <div class="detail-section">
+          <h3>物件情報</h3>
+          <div class="detail-row">
+            <div class="detail-label">物件名</div>
+            <div class="detail-value">東京オフィスビル 5F</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">所在地</div>
+            <div class="detail-value">東京都千代田区丸の内1-1-1</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">建物名</div>
+            <div class="detail-value">丸の内オフィスタワー</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">部屋番号</div>
+            <div class="detail-value">5階 501号室</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">面積</div>
+            <div class="detail-value">120.50 m²</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">用途</div>
+            <div class="detail-value">事務所</div>
+          </div>
+        </div>
+
+        <!-- 当事者情報 -->
+        <div class="detail-section">
+          <h3>当事者情報</h3>
+          <div style="margin-bottom: 20px;">
+            <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">貸主</h4>
+            <div class="detail-row">
+              <div class="detail-label">名称</div>
+              <div class="detail-value">株式会社丸の内不動産</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">住所</div>
+              <div class="detail-value">東京都千代田区丸の内2-2-2</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">連絡先</div>
+              <div class="detail-value">03-1234-5678</div>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size: 14px; color: #0066cc; margin-bottom: 10px;">借主</h4>
+            <div class="detail-row">
+              <div class="detail-label">名称</div>
+              <div class="detail-value">株式会社サンプル商事</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">住所</div>
+              <div class="detail-value">東京都港区赤坂1-1-1</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-label">連絡先</div>
+              <div class="detail-value">03-9876-5432</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 金銭条件 -->
+        <div class="detail-section">
+          <h3>金銭条件</h3>
+          <div class="detail-row">
+            <div class="detail-label">月額賃料</div>
+            <div class="detail-value">¥500,000</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">共益費</div>
+            <div class="detail-value">¥50,000</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">敷金</div>
+            <div class="detail-value">¥1,500,000 (賃料3ヶ月分)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">礼金</div>
+            <div class="detail-value">¥1,000,000 (賃料2ヶ月分)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">更新料</div>
+            <div class="detail-value">¥500,000 (賃料1ヶ月分)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">支払期日</div>
+            <div class="detail-value">毎月末日</div>
+          </div>
+        </div>
+
+        <!-- 抽出精度情報 -->
+        <div class="detail-section">
+          <h3>AI抽出精度情報</h3>
+          <div class="detail-row">
+            <div class="detail-label">全体信頼度</div>
+            <div class="detail-value"><span class="confidence-high">92%</span></div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">手動検証状況</div>
+            <div class="detail-value">未検証 (0/15項目)</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">抽出日時</div>
+            <div class="detail-value">2025-09-15 14:30:22</div>
+          </div>
+        </div>
+
+        <!-- 更新履歴 -->
+        <div class="detail-section">
+          <h3>更新履歴</h3>
+          <div class="detail-row">
+            <div class="detail-label">作成日時</div>
+            <div class="detail-value">2025-09-15 14:30:00</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">最終更新日時</div>
+            <div class="detail-value">2025-09-15 14:30:00</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">更新者</div>
+            <div class="detail-value">システム (自動抽出)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 関連文書 -->
+      <div class="card" style="margin-top: 20px;">
+        <h2>関連文書</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ファイル名</th>
+              <th>種別</th>
+              <th>アップロード日時</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>賃貸借契約書_C-2025-001.pdf</td>
+              <td>契約書原本</td>
+              <td>2025-09-15 14:25:00</td>
+              <td><a href="#" class="btn btn-secondary" style="padding: 5px 15px; font-size: 13px;">ダウンロード</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

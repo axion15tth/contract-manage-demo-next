@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>契約一覧 - 契約管理APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>契約管理APP</h1>
+      <nav>
+        <a href="02-dashboard.html">ダッシュボード</a>
+        <a href="01-login.html">ログアウト</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-nav">
+        <li><a href="02-dashboard.html">ダッシュボード</a></li>
+        <li><a href="05-upload.html">契約書登録</a></li>
+        <li><a href="03-contract-list.html" class="active">契約検索</a></li>
+        
+        <li><a href="08-rentroll.html">レントロール作成</a></li>
+        <li><a href="10-ai-analysis.html">AI契約分析</a></li>
+        <li><a href="07-calendar.html">期限管理</a></li>
+      </ul>
+      <ul class="sidebar-nav" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <li><a href="#">設定</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h2>契約検索</h2>
+
+      <!-- タブ -->
+      <div style="border-bottom: 2px solid #e2e8f0; margin-bottom: 30px;">
+        <div style="display: flex; gap: 8px;">
+          <a href="03-contract-list.html" style="text-decoration: none; padding: 12px 24px; color: #3182ce; border-bottom: 3px solid #3182ce; font-weight: 600; margin-bottom: -2px;">
+            通常検索
+          </a>
+          <a href="09-rag-search.html" style="text-decoration: none; padding: 12px 24px; color: #718096; font-weight: 500;">
+            AI検索
+          </a>
+        </div>
+      </div>
+
+      <!-- 検索フィルター -->
+      <div class="card">
+        <h3 style="font-size: 16px; margin-bottom: 15px;">検索・フィルター</h3>
+        <div class="grid grid-3">
+          <div class="form-group">
+            <label>キーワード検索</label>
+            <input type="text" class="form-control" placeholder="契約番号、物件名など">
+          </div>
+          <div class="form-group">
+            <label>契約種別</label>
+            <select class="form-control">
+              <option>すべて</option>
+              <option>賃貸借契約</option>
+              <option>更新合意書</option>
+              <option>覚書</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ステータス</label>
+            <select class="form-control">
+              <option>すべて</option>
+              <option>未検証</option>
+              <option>確定</option>
+              <option>承認済み</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-3">
+          <div class="form-group">
+            <label>開始日（開始）</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>開始日（終了）</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end;">
+            <button class="btn btn-primary">検索</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;">クリア</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 自然言語検索 -->
+      <div class="card" style="margin-top: 20px;">
+        <h3 style="font-size: 16px; margin-bottom: 15px;">自然言語検索</h3>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="例: 来年3月末に満了する賃貸契約">
+        </div>
+        <button class="btn btn-primary">検索</button>
+      </div>
+
+      <!-- 契約一覧テーブル -->
+      <div class="card" style="margin-top: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+          <h2>契約一覧 (全987件)</h2>
+          <div>
+            <button class="btn btn-secondary">CSV出力</button>
+            <button class="btn btn-secondary" style="margin-left: 10px;">Excel出力</button>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>契約番号</th>
+              <th>物件名</th>
+              <th>契約種別</th>
+              <th>開始日</th>
+              <th>終了日</th>
+              <th>賃料</th>
+              <th>ステータス</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>C-2025-001</td>
+              <td>東京オフィスビル 5F</td>
+              <td>賃貸借契約</td>
+              <td>2025-04-01</td>
+              <td>2027-03-31</td>
+              <td>¥500,000</td>
+              <td><span class="badge badge-warning">未検証</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2025-002</td>
+              <td>渋谷店舗 1F</td>
+              <td>賃貸借契約</td>
+              <td>2025-03-15</td>
+              <td>2026-03-14</td>
+              <td>¥800,000</td>
+              <td><span class="badge badge-success">確定</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2025-003</td>
+              <td>横浜倉庫</td>
+              <td>賃貸借契約</td>
+              <td>2025-02-01</td>
+              <td>2030-01-31</td>
+              <td>¥350,000</td>
+              <td><span class="badge badge-success">確定</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-125</td>
+              <td>品川オフィス 3F</td>
+              <td>更新合意書</td>
+              <td>2024-11-01</td>
+              <td>2025-10-31</td>
+              <td>¥450,000</td>
+              <td><span class="badge badge-info">承認済み</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-098</td>
+              <td>新宿店舗 B1F</td>
+              <td>賃貸借契約</td>
+              <td>2023-12-01</td>
+              <td>2025-11-30</td>
+              <td>¥720,000</td>
+              <td><span class="badge badge-success">確定</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-067</td>
+              <td>大阪営業所</td>
+              <td>賃貸借契約</td>
+              <td>2024-08-01</td>
+              <td>2026-07-31</td>
+              <td>¥380,000</td>
+              <td><span class="badge badge-success">確定</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+            <tr>
+              <td>C-2024-045</td>
+              <td>福岡店舗</td>
+              <td>賃貸借契約</td>
+              <td>2024-05-01</td>
+              <td>2027-04-30</td>
+              <td>¥280,000</td>
+              <td><span class="badge badge-success">確定</span></td>
+              <td><a href="04-contract-detail.html">詳細</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 20px;">
+          <button class="btn btn-secondary">前へ</button>
+          <span style="margin: 0 15px;">1 / 99ページ</span>
+          <button class="btn btn-secondary">次へ</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
